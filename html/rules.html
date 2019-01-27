@@ -18,14 +18,13 @@
           <nav class="masthead-nav">
             <a href="index.html" class="masthead-nav-item">Home</a>
             <a href="rules.html" class="masthead-nav-item active">Rules</a>
-            <a href="contact.html" class="masthead-nav-item">Contact</a>
           </nav>
         </div>
       </header>
 
       <main role="main" class="jumbotron">
         <h1 class="jumbotron-title">Under Construction!</h1>
-        <p><a href="#" class="btn btn-primary">Sign up for notifications</a></p>
+        <p><a onclick="subscribeToNotification()" class="btn btn-primary">Sign up for notifications</a></p>
       </main>
 
       <footer class="mastfoot">
@@ -33,4 +32,10 @@
       </footer>
     </div>
   </body>
+
+  <script>
+    function subscribeToNotification() {
+      window.location.href = "mailto:tyrion@gotdeadpool.com?subject=GoTDeadpool&body=Sign%20me%20up";
+    }
+  </script>
 </html>
