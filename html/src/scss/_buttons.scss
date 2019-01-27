@@ -1,0 +1,119 @@
+//
+// Variables
+//
+
+$btn-border-map: map-merge(
+  $border-map, 
+  (
+    "width": .05rem, 
+    "color": transparent
+  )
+);
+
+$btn-sizes-map: (
+  "md": (
+    "font-size": 1.25rem, 
+    "padding": .75rem 1.25rem, 
+    "border-radius": .3rem
+  )
+);
+
+$btn-skins-map: (
+  "primary": (
+    "normal": (
+      "color": get-theme-color("secondary"), 
+      "background-color": get-theme-color("primary"),
+      "border-color": get-theme-color("primary"),
+      "font-weight": $font-weight-bold
+    ),
+    "hover": (
+      "color": get-theme-color("secondary")
+    ),
+    "active": (
+      "color": get-theme-color("primary"), 
+      "background-color": $dark-gray,
+      "border-color": $extra-dark-gray
+    ),
+    "focus": (
+      "box-shadow": 0 0 0 .2rem rgba(108,117,125,.5)
+    )
+  )
+);
+
+
+//
+// Mixins
+//
+
+@mixin set-button-size($size-map) {
+  @include map-parse($size-map);
+}
+
+@mixin set-button-skin($skin-map) {
+  @each $key, $value in $skin-map {
+    @if $key == "normal" {
+      @include map-parse($value);
+    } @else if {
+      &:#{$key} {
+        @include map-parse($value);
+      }
+    }
+  }
+}
+
+
+//
+// Base styles
+//
+
+.btn {
+  display: inline-block;
+  line-height: 1.5;
+  font-weight: $font-weight-normal;
+  vertical-align: middle;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: none;
+  user-select: none;
+  white-space: nowrap; // Hack: Не позволяет переносить текст кнопки на следующую строку 
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+  
+  border: {
+    @include map-parse($btn-border-map);
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus {
+    outline: none; // Убираем стандартное выделение в Google Chrome
+  }
+
+  $md-size-map: map-get($btn-sizes-map, "md");
+  @include set-button-size($md-size-map);
+
+  $primary-skin-map: map-get($btn-skins-map, "primary");
+  @include set-button-skin($primary-skin-map);
+}
+
+@each $key, $value in $btn-sizes-map {
+  .btn-#{$key} {
+    @include set-button-size($value);
+  }
+}
+
+@each $key, $value in $btn-skins-map {
+  .btn-#{$key} {
+    @include set-button-skin($value);
+  }
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+
+  + .btn-block {
+    margin-top: .5rem;
+  }
+}

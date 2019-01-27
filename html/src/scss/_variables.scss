@@ -1,0 +1,26 @@
+$white: #fff !default;
+$silver: #dee2e6 !default;
+$dark-gray: #545b62 !default;
+$extra-dark-gray: #4e555b !default;
+$dark: #333 !default;
+$black: #000 !default;
+
+$theme-colors-map: (
+  "primary": $white,
+  "secondary": $dark
+) !default;
+
+$font-size: 16px !default;
+$line-height: 1.5 !default;
+$font-family-list: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default;
+
+$font-weight-light: 300 !default;
+$font-weight-normal: 400 !default;
+$font-weight-bold: 700 !default;
+$font-weight-extra-bold: 1200 !default;
+
+$border-map: (
+  "width": 1px,
+  "style": solid,
+  "color": $silver
+) !default;

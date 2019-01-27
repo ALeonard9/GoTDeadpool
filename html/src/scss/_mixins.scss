@@ -1,0 +1,24 @@
+@mixin map-parse($map) {
+  @each $key, $value in $map {
+    #{$key}: $value;
+  }
+}
+
+// @include set-border-radius("top", 25%);
+@mixin set-border-radius($side, $radius) {
+  @if $side == "top" {
+    border-top-left-radius: $radius;
+    border-top-right-radius: $radius;
+  } @else if $side == "right" {
+    border-top-right-radius: $radius;
+    border-bottom-right-radius: $radius;
+  } @else if $side == "bottom" {
+    border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
+  } @else if $side == "left" {
+    border-top-left-radius: $radius;
+    border-bottom-left-radius: $radius;
+  } @else {
+    @error "Parameter '$side' must be one as 'top', 'bottom', 'right', 'top',";
+  }
+}

@@ -1,0 +1,22 @@
+@function get-theme-color($key) {
+  $theme-color: map-get($theme-colors-map, $key);
+  @return $theme-color;
+}
+
+@function get-darken-theme-color($key, $percent) {
+  $theme-color: get-theme-color($key);
+  @if not $percent {
+    @return $theme-color;
+  }
+
+  @return darken($theme-color, $percent);
+}
+
+@function get-lighten-theme-color($key, $percent) {
+  $theme-color: get-theme-color($key);
+  @if not $percent {
+    @return $theme-color;
+  }
+  
+  @return lighten($theme-color, $percent);
+}
